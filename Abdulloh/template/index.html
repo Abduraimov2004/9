@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Agency - Start Bootstrap Theme</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="static/css/styles.css" rel="stylesheet" />
+    </head>
+    <body id="page-top">
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+            <div class="container">
+                <a class="navbar-brand" href="#page-top"><img src="assets/img/navbar-logo.svg" alt="..." /></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="fas fa-bars ms-1"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
+                        <li class="nav-item"><a class="nav-link" href="#services">Xizmatlar</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#portfolio">Portfolio</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#team">Jamoa</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#contact">Aloqa</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Masthead-->
+        <header class="masthead">
+            <div class="container">
+                <div class="masthead-subheading">Studiyaimizga xush kelibsiz!</div>
+                <div class="masthead-heading text-uppercase">Sizni kutib olish juda yoqimli</div>
+                <a class="btn btn-primary btn-xl text-uppercase" href="#services">Batafsil ma'lumot</a>
+            </div>
+        </header>
+        <!-- Services-->
+    <section class="page-section" id="services">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-heading text-uppercase">Xizmatlar</h2>
+                <h3 class="section-subheading text-muted">Bizning xizmatlarimiz bilan tanishing.</h3>
+            </div>
+            <div class="row text-center">
+                {% for service in services %}
+                    <div class="col-md-4">
+                        <span class="fa-stack fa-4x">
+                            <i class="fas fa-circle fa-stack-2x text-primary"></i>
+                        </span>
+                        <h4 class="my-3">{{ service.title }}</h4>
+                        <p class="text-muted">{{ service.description|slice:":100" }}...</p>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+        <!-- Portfolio Grid-->
+               <section id="portfolio" class="page-section">
+                   <style>
+    .portfolio-container {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr); /* 4 ta ustun */
+        gap: 15px;
+    }
+
+    .portfolio-item img {
+        width: 100%;
+        height: 200px; /* O'lchamini bir xil qilish */
+        object-fit: cover;
+    }
+</style>
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-heading text-uppercase">Portfolio</h2>
+                <h3 class="section-subheading text-muted">Bizning ishlarimizdan namuna.</h3>
+            </div>
+            <div class="row">
+                {% for p in portfolio %}
+                <div class="col-md-3 portfolio-item">
+                    <a href="#" class="portfolio-link">
+                        <img src="{{ p.image.url }}" alt="{{ p.title }}">
+                    </a>
+                    <div class="portfolio-caption">
+                        <h4>{{ item.title }}</h4>
+                        <p class="text-muted">{{ p.description }}</p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+        <!-- About-->
+        <!-- Team-->
+<section class="page-section bg-light" id="team">
+    <style>
+        .team-member img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+    </style>
+    <div class="container">
+        <div class="text-center">
+            <h2 class="section-heading text-uppercase">Jamoa</h2>
+            <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+        </div>
+        <div class="row">
+            {% for i in image %}
+            <div class="col-md-3 col-sm-6 mb-4">
+                <div class="team-member">
+                    <img src="{{ i.image.url }}"  />
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+        <!-- Contact-->
+        <section class="page-section" id="contact">
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="section-heading text-uppercase">Aloqa</h2>
+                    <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+                </div>
+                <form id="contactForm" data-sb-form-api-token="API_TOKEN">
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="name">Ism va Familya</label>
+                            <input class="form-control" id="name" type="text" placeholder="Ismingiz va Familyangiz" data-sb-validations="required" />
+                            <div class="invalid-feedback" data-sb-feedback="name:required">Ismingiz va Familyangizni kiriting.</div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="email">Elektron Pochta</label>
+                            <input class="form-control" id="email" type="email" placeholder="Elektron pochta manzilingiz" data-sb-validations="required,email" />
+                            <div class="invalid-feedback" data-sb-feedback="email:required">Elektron pochta manzilingizni kiriting.</div>
+                            <div class="invalid-feedback" data-sb-feedback="email:email">Yaroqli elektron pochta manzilini kiriting.</div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 mb-3">
+                            <label for="message">Xabar</label>
+                            <textarea class="form-control" id="message" rows="5" placeholder="Xabar" data-sb-validations="required"></textarea>
+                            <div class="invalid-feedback" data-sb-feedback="message:required">Xabarni kiriting.</div>
+                        </div>
+                    </div>
+                    <div class="d-grid">
+                        <button class="btn btn-primary btn-lg" id="submitButton" type="submit">Yuborish</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+        <!-- Footer-->
+        <footer class="footer py-4 py-md-5 my-5">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-6 col-md-8 text-center">
+                        <p class="text-muted">&copy; Your Website 2024. All Rights Reserved.</p>
+                        <p class="text-muted">Design by <a href="https://startbootstrap.com">Start Bootstrap</a></p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- Portfolio Modals-->
+        <!-- Portfolio Modal 1-->
+        <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" aria-labelledby="portfolioModal1Label" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="portfolioModal1Label">Loyihaning 1</h5>
+                        <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body text-center">
+                        <img class="img-fluid rounded mb-5" src="assets/img/portfolio/1.jpg" alt="..." />
+                        <p class="text-muted">Loyihaning 1 haqida batafsil ma'lumot.</p>
+                        <button class="btn btn-primary" data-bs-dismiss="modal">
+                            <i class="fa fa-xmark me-1"></i>
+                            Yopish
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Portfolio Modal 2-->
+        <div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" aria-labelledby="portfolioModal2Label" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="portfolioModal2Label">Loyihaning 2</h5>
+                        <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body text-center">
+                        <img class="img-fluid rounded mb-5" src="assets/img/portfolio/2.jpg" alt="..." />
+                        <p class="text-muted">Loyihaning 2 haqida batafsil ma'lumot.</p>
+                        <button class="btn btn-primary" data-bs-dismiss="modal">
+                            <i class="fa fa-xmark me-1"></i>
+                            Yopish
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Portfolio Modal 3-->
+        <div class="portfolio-modal modal fade" id="portfolioModal3" tabindex="-1" aria-labelledby="portfolioModal3Label" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="portfolioModal3Label">Loyihaning 3</h5>
+                        <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body text-center">
+                        <img class="img-fluid rounded mb-5" src="assets/img/portfolio/3.jpg" alt="..." />
+                        <p class="text-muted">Loyihaning 3 haqida batafsil ma'lumot.</p>
+                        <button class="btn btn-primary" data-bs-dismiss="modal">
+                            <i class="fa fa-xmark me-1"></i>
+                            Yopish
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Portfolio Modal 4-->
+        <div class="portfolio-modal modal fade" id="portfolioModal4" tabindex="-1" aria-labelledby="portfolioModal4Label" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="portfolioModal4Label">Loyihaning 4</h5>
+                        <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body text-center">
+                        <img class="img-fluid rounded mb-5" src="assets/img/portfolio/4.jpg" alt="..." />
+                        <p class="text-muted">Loyihaning 4 haqida batafsil ma'lumot.</p>
+                        <button class="btn btn-primary" data-bs-dismiss="modal">
+                            <i class="fa fa-xmark me-1"></i>
+                            Yopish
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Portfolio Modal 5-->
+        <div class="portfolio-modal modal fade" id="portfolioModal5" tabindex="-1" aria-labelledby="portfolioModal5Label" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="portfolioModal5Label">Loyihaning 5</h5>
+                        <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body text-center">
+                        <img class="img-fluid rounded mb-5" src="assets/img/portfolio/5.jpg" alt="..." />
+                        <p class="text-muted">Loyihaning 5 haqida batafsil ma'lumot.</p>
+                        <button class="btn btn-primary" data-bs-dismiss="modal">
+                            <i class="fa fa-xmark me-1"></i>
+                            Yopish
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Portfolio Modal 6-->
+        <div class="portfolio-modal modal fade" id="portfolioModal6" tabindex="-1" aria-labelledby="portfolioModal6Label" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="portfolioModal6Label">Loyihaning 6</h5>
+                        <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body text-center">
+                        <img class="img-fluid rounded mb-5" src="assets/img/portfolio/6.jpg" alt="..." />
+                        <p class="text-muted">Loyihaning 6 haqida batafsil ma'lumot.</p>
+                        <button class="btn btn-primary" data-bs-dismiss="modal">
+                            <i class="fa fa-xmark me-1"></i>
+                            Yopish
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Bootstrap core JS-->
+        <script src="assets/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="assets/js/scripts.js"></script>
+    </body>
+</html>
